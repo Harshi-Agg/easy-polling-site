@@ -1,0 +1,596 @@
+<!---SongDew polling site---!>
+		
+<HTML>
+
+<HEAD>
+    
+	<TITLE> SONGDEW FREE POLLING </TITLE>
+	
+	<STYLE>
+		body,html {
+ 			background: #red; /* fallback color */
+                        background: linear-gradient( to bottom, #ff99cc 10%, #33ccff 100%);
+                        background-repeat:no-repeat;
+                        background-size: cover;
+                        min-width: 100%;
+                        min-height: 100%;
+                }
+	<!---           styling for header section      ----!>
+		#heading{
+    			text-align:center;
+  		  	display:inline-block;
+		}
+		
+		.sticky{
+			position: fixed;
+			top:0;
+			width:100%
+		}
+		.content{
+			padding:16px;
+		}
+		.sticky + .content{
+			padding-top: 60px;
+		}
+		#img1{    
+			border-style:hidden;
+			border-width: 20px;
+			margin-right: 20px;
+			width:100px;
+			display:inline;
+			float: left;
+		}
+		#span1{
+			text-align:center;
+  		  	display:inline-block;
+		}
+		#span2{
+			float:right;
+			text-align:center;
+			margin-left:250px;
+  		  	display:inline-block;
+		}
+		#line{  
+			font-family:"Comic Sans MS", cursive, sans-serif;
+			font-weight:bold;
+			color:#b30000;
+			margin-left:10px;
+			font-size:13px;
+			float:left;
+			width:80px;
+			display:inline;
+		}
+		h1{
+			font-weight:bold;
+			font-family:"Comic Sans MS", cursive, sans-serif;
+			font-size:45px;
+			margin-top: 25px;
+			float:left;
+			width:100px;
+			display:inline;
+		}
+		#register{
+			font-family:"Times New Roman", Times, serif;
+			font-weight:bold;
+			margin-left:10px;
+			margin-right:15px;
+			width:80px;
+			display:inline;
+		}
+		.container {
+  			display: inline-block;
+  			cursor: pointer;
+		}
+
+		.bar1, .bar2, .bar3 {
+  			width: 20px;
+  			height:2px;
+  			background-color: #333;
+  			margin: 6px 0;
+  			transition: 0.4s;
+		}
+		.sidenav {
+  			height: 100%; 
+  			width: 0; 
+  			position: fixed; 
+  			z-index: 1; 
+  			top: 0;
+  			right: 0;
+  			background-color: #111;
+  			overflow-x: hidden; 
+  			padding-top: 60px;
+			transition: 0.5s; 
+		}
+		.sidenav a {
+  			padding: 8px 8px 8px 32px;
+  			text-decoration: none;
+  			font-size: 25px;
+  			color: #818181;
+  			display: block;
+  			transition: 0.3s;
+		}
+		.sidenav a:hover {
+  			color: #f1f1f1;
+		}
+		.sidenav .closebtn {
+  			position: absolute;
+  			top: 0;
+  			right: 25px;
+  			font-size: 36px;
+  			margin-right:170px;
+		}
+		a{
+			color:black;
+			text-decoration: none;
+		}
+		.welcomePage{
+			text-align:center;
+  		  	display:inline-block;
+			margin-top:5%;
+			margin-left:20%;
+			margin-bottom:15px;
+			padding: 6px 12px;
+		}
+	        #intro{
+		        font-family:"Times New Roman", Times, serif;
+			font-weight:strong;
+			font-size:35px;
+			text-align:center;
+			margin-left:20px;
+			margin-right:15px;
+			width:200px;
+			display:inline;
+			color: black;
+		}
+		#subintro{
+		        font-family:"Times New Roman", Times, serif;
+			font-weight:normal;
+			font-size:30px;
+			margin-left:10px;
+			text-align:center;
+			margin-right:15px;
+			width:80px;
+			display:inline;
+			color: black;
+		}
+		.tab button.active {
+  			background-color: #c2d6d6;
+		}
+		.container-guide{
+			
+  			padding: 6px 12px;
+  			border-top: none;
+		}
+		.col-img-left{
+			border-style:hidden;
+			border-width: 50px;
+			margin-right: 20px;
+			padding: 60px;
+			width:200px;
+			display:inline;
+			float: left;
+		}
+		#container guide-img{
+			border-style:hidden;
+			border-width: 20px;
+			margin-right: 20px;
+			width:200px;
+			display:inline;
+			float: left;
+		}	
+		#col-2-center{
+			border-style:hidden;
+			border-width: 20px;
+			float:left;
+			width:900px;
+			display:inline;
+		}
+		h2{
+			text-align:center;
+			font-weight:normal;
+			font-family:"Times New Roman", Times, serif;
+			font-size:30px;
+			margin-left: 260px;
+			margin-top: 60px;
+			float:left;
+			display:inline;
+		}
+		h4{
+			text-align:center;
+			font-weight:bold;
+			font-family:"Times New Roman", Times, serif;
+			font-size:25px;
+			margin-left: 290px;
+			margin-top: 0px;
+			float:left;
+			display:inline;
+			text-shadow: 2px 2px #ff0000;
+		}
+		#p1{
+			float:left;
+			font-weight:normal;
+			font-size:20px;
+			margin-left:10px;
+			text-align:center;
+			margin-right:15px;
+			margin-left: 200px;
+			display:inline;
+			width:600px;
+		}
+		#p2{
+			float:left;
+			font-weight:normal;
+			font-size:20px;
+			margin-top:0px;
+			text-align:center;
+			margin-right:15px;
+			margin-left: 180px;
+			display:inline;
+			width:650px;
+		}
+	<!--- Style the tab content ---!>
+		.tabcontent {
+  			display: none;
+  			padding: 6px 12px;
+  			border: 1px solid #ccc;
+  			border-top: none;
+		}
+		#question{
+			background-color: #c2d6d6;
+			border-radius:12px;
+			padding:15px;
+		}
+		#PollStyles{
+			background-color: #c2d6d6;
+			border-radius:12px;
+			padding:15px;
+		}
+		#xyz{
+			background-color: #c2d6d6;
+			border-radius:12px;
+			padding:15px;
+		}
+		.tablinks{
+			background-color: #f2f2f2;
+  			border: none;
+  			color: #99003d;
+  			padding: 10px 20px;
+  			text-align: center;
+  			text-decoration: none;
+			font-family:Georgia, serif;
+  			display: inline-block;
+  			font-size: 20px;
+  			cursor: pointer;
+			border-radius:10px;
+			transition-duration:0.4s;
+		}
+		.tablinks:hover {
+			color:white;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+		#questionDiv {
+  			border-radius:12px;
+  			padding: 15px 12px;
+  			border: 3px solid #ccc;
+  			border-top: none;
+		}
+		#choicesDiv {
+  			border-radius:12px;
+  			padding: 15px 12px;
+  			border: 3px solid #ccc;
+  			border-top: none;
+		}
+		#textContainer{
+			font-family: arial,verdana; 
+			font-size: 14px;
+			padding:10px;
+			border-radius: 12px;
+		}
+		.choice{
+			font-family: arial,verdana; 
+			font-size: 14px;
+			padding:10px;
+			border-radius: 12px;
+			margin:10px;
+		}
+		#lastHead{
+			font-family:"Times New Roman", Times, serif;
+			font-weight:normal;
+			font-size:35px;
+			text-align:center;
+			margin-left:60px;
+			margin-right:15px;
+			width:200px;
+			display:inline;
+			color: black;
+		}
+		#lastHeadtext{
+			font-family:"Times New Roman", Times, serif;
+			font-weight:normal;
+			font-size:35px;
+			text-align:center;
+			margin-left:400px;
+			margin-right:15px;
+		}
+		#lastContainer{
+			width:200px;
+			display:inline;
+			padding:40px;
+		}
+		#lastImg{
+			padding:20px;
+			margin-left:200px;
+		}
+		.button1{
+			margin-left:40%;
+			transition-duration:0.4s;
+			border: 2px solid #4CAF50;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+			}
+		.button1:hover {
+			background-color:white;
+			color:black;
+		}
+		.Section1{
+			background-color:#e0ebeb;
+			margin-top:5%;
+			height:150px;
+		}
+		.aside1{
+			background-color:grey;
+			margin-top:0%;
+		}
+		.Section-text{
+			padding:10px;
+			text-align:center;
+		}
+		.Aside-text{
+			padding:10px;
+			text-align:center;
+		}
+		ul{
+			margin-top:2%;
+		}
+		ul li{ 
+			display:inline;
+		}
+		li{
+			padding:5px;
+		}
+		.list1{
+			font-weight:normal;
+		}
+		.list2{
+			font-weight:bold;
+		}
+	</STYLE>
+</HEAD>
+<BODY>
+<header>
+	<div id="heading"> 
+	<table width=100%>
+	<tbody>
+	<tr>
+	<td valign="middle" style="height:30px; width: 50px; color:#eaffff;">
+		<img id="img1" src= "https://www.politicspa.com/wp-content/uploads/2017/12/aqn9I8y0_400x400.jpg" height= "90" width="90"> 
+	</td>
+	<td valign="middle" style="height:30px; width: 500px; color:#eaffff;">
+		<span id="span1">
+        		<p id="line"> free online polls </p>
+        		<h1 id="h1line"><b> <span style="color:#0040ff;">Songdew</span><span style="color:black;">Polls!</span> </b></h1>
+		</span>     
+	</td>        
+	<td align:"right" valign:"top">
+		<span id="span2">
+		<a href="#reg" id="register"> Register</a>
+		<a href="#log" id="register"> LogIn</a>
+		<a href="#" id="register">ContactUs</a>
+		<a href="#" id="register"> About</a>
+		<a href="#" id="register"> FAQ</a>
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  			<a href="poll.php">MyPolls</a>
+  			<a href="#">Services</a>
+  			<a href="#">Clients</a>
+  			<a href="#">Contact</a>	
+		</div>
+		<div class="container" onclick="myMenu(this)">
+  			<div class="bar1"></div>
+  			<div class="bar2"></div>
+  			<div class="bar3"></div>
+		</div>
+		</span>
+	</td>
+	</tr>
+	</tbody>
+	</table>  		
+	</div> 
+	
+	<div class="welcomePage" style="margin-top:100px;">
+		<p id="intro"> USE THE #1 RATED ONLINE POLL MAKER</p><br><br>
+		<p id="subintro"> Publish a Free Poll In Seconds</p>
+	</div>
+</header>
+<br>
+<div class="wide bg" style="background-color:white; width=100%; height:300px; margin-top:20px;">
+	<div class="container-guide">
+		<div class="col-img-left">
+			<img id="container guide-img" src="https://writtent.com/blog/wp-content/uploads/2014/02/Fotolia_61034637_XS.jpg" height="200" width="200">
+		</div>
+		<div id="col-2-center">
+			<h2 id="456"> Live Results and Clarity With Graphs</h2>
+			<br><br>
+			<p id="p1">Live graphs show your poll results immediately in easy to understand and read bar graph format. But final results don't always reveal the whole picture. The longitudinal graph provides a visual representation of poll votes over time.</p>
+		</div>
+	</div>
+</div>
+<div style="margin-top:70px; margin-left:25%; margin-bottom:30px;">
+		<p id="intro"> START GETTING POLL RESULTS NOW</p>
+</div>
+<div id="maindiv">
+	<table align="center" cellpadding="10px" width="80%" border="0">
+	<tbody>
+	<tr>
+	<td width="100%" valign="top">
+		<!-- Tab links --!>
+		<div class="tab">
+  			<button class="tablinks" onclick="openTask(event, 'question')" id="defaultOpen">Question</button>
+  			<button class="tablinks" onclick="openTask(event, 'PollStyles')">Themes</button>
+  			<button class="tablinks" onclick="openTask(event, 'xyz')">*Premium</button>
+		</div>
+		<!--- Tab Contents ---!>
+		<form action="insert.php" method="post">
+		<div id="question" class="tabcontent" >
+			<div id="questionDiv" style:"display:block;">
+				<div id="questiontextContainer">
+					<h3 style="display:inline"> Question Text: </h2>
+					<textarea name="textContainer" id="textContainer" style="width:99%; rows="3" ></textarea>
+				</div>	
+			</div>
+			<div id="ChoicesDiv" style:"display:block;">
+				<div id="ChoicetextContainer">
+					<h3 style="display:inline"> Choices: </h2>
+					<br>
+					<input class="choice" type="text" placeholder="enter your choice" name="choice1">
+					<br>
+					<input class="choice" type="text" placeholder="enter your choice" name="choice2">
+					<br>
+					<input class="choice" type="text" placeholder="enter your choice" name="choice3">
+				</div>	
+			</div>
+		<input class="button1"  id="button" type="submit" style="background-color:#009900; width:150px; height:50px; font-size:20px; padding:10px; color:white;" name= 'submit' value="Enter">
+		</div>
+
+                </form>
+		<div id="PollStyles" class="tabcontent">
+		    <div id="questionDiv" style:"display:block;">
+				<div id="questiontextContainer">
+					<h3 style="display:inline"> This Is a Demo site. The Only Tab Working Is 'Question'</h3>
+				</div>	
+			</div>
+		</div> 
+		<div id="xyz" class="tabcontent">
+		    <div id="questionDiv" style:"display:block;">
+				<div id="questiontextContainer">
+					<h3 style="display:inline"> This Is a Demo site. The Only Tab Working Is 'Question'</h3>
+				</div>	
+			</div>
+		</div>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+</div>
+<div style="margin-bottom:7%;"></div>
+<div class="wide bg" style="background-color:#e0ebeb; width=100%; height:400px">
+	<div class="container-guide">
+		<div class="col-img-left">
+			<img id="container guide-img" src="https://writtent.com/blog/wp-content/uploads/2014/02/Fotolia_61034637_XS.jpg" height="200" width="200">
+		</div>
+		<div id="col-2-center">
+			<h2 id="123"> How to create a poll in 3 simple steps</h2><br>
+			<h4>Get instant feedback with online polls.</h4>
+			<p id="p2"><b><em>Sometimes you want a quick bit of feedback from your audience</b></em><br>
+
+What’s the best time for the yoga class you’re teaching? Which of six choices is the perfect name for that new yogurt flavor? Where should the team hold its next offsite meeting? Who will win the next election? Which polling websites are worth your time?
+
+A super tool for on-the-spot feedback, online polls let you check in with your audience or customers any time. When you do, you send the message that you know they’re there and their opinions matter.</p>
+		</div>
+	</div>
+</div>
+<div id="lasttext" style="background-color:white; width=100%; height:200px">
+	<div id="lastHead">
+		<h2 id="lastHeadText">Polling 1 Million+ People Everyday</h2>
+	</div>
+	<div id="lastContainer">
+		<div class="hold">
+			<img  id="lastImg" src="https://www.poll-maker.com/3012/images/pollclients.png">
+		</div>
+	</div>
+</div>
+<div style="margin-top:10%;">
+	<input class="button1" type="button" style="background-color:green; width:250px; height:80px; font-size:20px; padding:10px; color:white;" value="View My Free Polls" onclick="myPoll()">
+</div>
+<div id="songdewfooter">
+	<footer class="footer">
+		<div class="Section1">
+			<div class="Section-text">
+				<ul class="list1">
+					<li>Team</li>
+					<li>Jobs</li>
+					<li>Blog</li>
+					<li>Media Corner</li>
+					<li>Songdew Labs</li>
+				</ul>
+				<ul class="list1">
+					<li>Adds</li>
+					<li>Help And Support</li>
+					<li>Contact Us</li>
+				</ul>
+			</div>
+		</div>
+		<div class="aside1">
+			<div class="Aside-text">
+				<ul class="list2">
+					<li>Terms And Conditions</li>
+				</ul>
+				<ul class="list2">
+					<li>Imprint</li>
+					<li>Privacy</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</div>
+			
+<SCRIPT>
+		document.getElementById("defaultOpen").click();
+
+		function openTask(evt, taskName) {
+  			var i, tabcontent, tablinks;
+			// Get all elements with class="tabcontent" and hide them
+  			tabcontent = document.getElementsByClassName("tabcontent");
+  			for (i = 0; i < tabcontent.length; i++) {
+    			tabcontent[i].style.display = "none";
+  			}
+
+  			// Get all elements with class="tablinks" and remove the class "active"
+  			tablinks = document.getElementsByClassName("tablinks");
+  			for (i = 0; i < tablinks.length; i++) {
+    			tablinks[i].className = tablinks[i].className.replace(" active", "");
+  			}
+
+  			// Show the current tab, and add an "active" class to the button that opened the tab
+  			document.getElementById(taskName).style.display = "block";
+  			evt.currentTarget.className += " active";
+			}
+	<!--- header script---!>
+		window.onscroll- function(){myScrollFunction()};
+		var navbar= document.getElementById("navbar");
+		var sticky= navabr.offsetTop;
+		function myScrollFunction(){
+			if(window.pageYOffset >= sticky){
+				navbar.classList.add("sticky")
+			}else{s
+				navbar.classList.remove("sticky");
+			}
+		}
+	<!---Menu Bar---!>
+		function myMenu(x) {
+  			
+			document.getElementById("mySidenav").style.width = "250px";
+			
+			}
+		function closeNav() {
+  			document.getElementById("mySidenav").style.width = "0";
+  			
+			}
+	<!---MyPOLL()---!>
+		function myPoll(){
+			alert(" Go to the menu section(My Polls) to view the poll created. Click Ok to view");
+			window.location="poll.php";
+		}
+			
+	</SCRIPT>
+</BODY>
+</HTML>
